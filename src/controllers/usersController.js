@@ -36,8 +36,16 @@ const createUser = (req, res) => {
   };
 
 const updateUser = (req, res) => {
-    const updateUser = usersService.updateUser(req.params.userId);
-    res.send(`Update user: ${req.params.userId}`);
+  const newUser = req;
+  console.log(newUser);
+  usersService.updateUser(newUser)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      console.error('Error al actualizar el usuario: ', error);
+      res.status(500).send('Error al actualizar el usuario');
+    });
 }
 
 const deleteUser = (req, res) =>{
