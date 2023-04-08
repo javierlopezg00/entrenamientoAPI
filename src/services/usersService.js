@@ -45,7 +45,7 @@ const getOneUser = (userId) => {
   
   const updateUser = (user, id) => {
     return new Promise((resolve, reject) => {
-      const sql = `UPDATE users SET user = ?, firstName = ?, lastName = ?, mail = ?, password = ?, birthday = ? WHERE id = ?`;
+      const sql = `UPDATE users SET user = ?, firstName = ?, LastName = ?, mail = ?, password = ?, birthday = ? WHERE id = ?`;
       connection.query(sql, [user.userN, user.firstName, user.lastName, user.mail, user.password, user.birthday, id], (error, results) => {
         if (error) {
           console.error('Error al actualizar el usuario: ', error);

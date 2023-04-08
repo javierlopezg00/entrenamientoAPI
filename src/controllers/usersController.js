@@ -36,9 +36,9 @@ const createUser = (req, res) => {
   };
 
 const updateUser = (req, res) => {
-  const newUser = req;
+  const newUser = req.body;
   console.log(newUser);
-  usersService.updateUser(newUser)
+  usersService.updateUser(newUser, req.params.userId)
     .then((result) => {
       res.send(result);
     })
