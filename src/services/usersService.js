@@ -31,7 +31,7 @@ const getOneUser = (userId) => {
 
   const login = async (user) => {
     return new Promise((resolve, reject) => {
-      const sql = 'SELECT * FROM users WHERE id = ? and password = ';
+      const sql = 'SELECT * FROM users WHERE id = ? and password = ?';
       connection.query(sql, [user.userId,user.password], (error, results) => {
         if (error) {
           console.error('Error al obtener los usuarios: ', error);
