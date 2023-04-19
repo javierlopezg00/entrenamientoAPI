@@ -12,6 +12,7 @@ const getAllUsers = (req, res) => {
   };
 
 const getOneUser = (req, res) =>{
+  console.log(req);
     usersService.getOneUser(req.params.userId)
     .then((result) => {
         res.send(result);
