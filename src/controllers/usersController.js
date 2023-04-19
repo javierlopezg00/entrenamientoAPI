@@ -24,10 +24,23 @@ const getOneUser = (req, res) =>{
     
 }
 
+const getuserID = (req, res) =>{
+  console.log("user");
+  usersService.getuserID(req.params.user)
+  .then((result) => {
+      res.send(result);
+  })
+  .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error al obtener los usuarios');
+    })
+  
+}
+
 const login = (req, res) =>{
-  console.log(req)
+  console.log(req.params.user)
   console.log("login")
-  usersService.login(req.params)
+  usersService.login(req.params.user, req.params.password)
   .then((result) => {
       res.send(result);
   })
@@ -80,5 +93,6 @@ module.exports = {
     login,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getuserID
 }
