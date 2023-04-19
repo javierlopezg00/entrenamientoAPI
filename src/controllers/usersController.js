@@ -12,6 +12,7 @@ const getAllUsers = (req, res) => {
   };
 
 const getOneUser = (req, res) =>{
+    console.log("user");
     usersService.getOneUser(req.params.userId)
     .then((result) => {
         res.send(result);
@@ -21,6 +22,20 @@ const getOneUser = (req, res) =>{
         res.status(500).send('Error al obtener los usuarios');
       })
     
+}
+
+const login = (req, res) =>{
+  console.log(req)
+  console.log("login")
+  usersService.login(req.params)
+  .then((result) => {
+      res.send(result);
+  })
+  .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error al obtener los usuarios');
+    })
+  
 }
 
 const createUser = (req, res) => {
@@ -62,6 +77,7 @@ const deleteUser = (req, res) =>{
 module.exports = {
     getAllUsers,
     getOneUser,
+    login,
     createUser,
     updateUser,
     deleteUser

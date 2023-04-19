@@ -28,6 +28,22 @@ const getOneUser = (userId) => {
       });
     });
   };
+
+  const login = async (user) => {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT * FROM users WHERE id = ? and password = ';
+      connection.query(sql, [user.userId,user.password], (error, results) => {
+        if (error) {
+          console.error('Error al obtener los usuarios: ', error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  };
+
+
   
   const createUser = (user) => {
     return new Promise((resolve, reject) => {
@@ -74,6 +90,7 @@ const deleteUser = (userId) => {
 module.exports = {
     getAllUsers,
     getOneUser,
+    login,
     createUser,
     updateUser,
     deleteUser
