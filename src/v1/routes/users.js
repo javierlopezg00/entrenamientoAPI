@@ -9,6 +9,6 @@ router.get("/", userController.getAllUsers)
 .post("/createUser", userController.createUser)
 .patch("/:userId", userController.updateUser)
 .delete("/:userId", userController.deleteUser)
-.get("/login/:user", userController.getuserID)
+.post("/login/:user", userController.getuserID)
 
 module.exports = router;
